@@ -4,14 +4,39 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>MD Zulqarnain Khan — Portfolio</title>
-  <meta name="description" content="Personal portfolio of zulqarnain's — Web Developer / Designer." />
+  <meta name="description" content="Personal portfolio of Your Name — Web Developer / Designer." />
   <meta name="theme-color" content="#0ea5e9" />
   <!-- Open Graph (edit these) -->
-  <meta property="og:title" content="zulqarnain's — Portfolio" />
+  <meta property="og:title" content="Your Name — Portfolio" />
   <meta property="og:description" content="Web developer building clean, fast, and accessible products." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="/og-image.png" />
   <style>
+    /* Header */
+header {
+  background: #000;   /* black background */
+  color: #d4af37;     /* golden text */
+  text-align: center;
+  padding: 20px;
+}
+
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo-container img {
+  width: 100px;  /* logo size */
+  margin-bottom: 10px;
+}
+
+.logo-container h1 {
+  font-family: "Georgia", serif;
+  font-size: 24px;
+  letter-spacing: 2px;
+}
+
     /* Preloader Styles */
 #preloader {
   position: fixed;
@@ -189,11 +214,18 @@
   <!-- Preloader -->
 <div id="preloader">
   <div class="loader">
-    <img src="images/logo.png" alt="Loading..." />
+    <img src="Screenshot (3).png" alt="Loading..." />
     <p>Loading...</p>
   </div>
 </div>
-  
+  <!-- Header -->
+<header>
+  <div class="logo-container">
+    <img src="Screenshot (3).png" alt="My Logo" class="logo">
+    <h1>BARBAHAN TECHNOLOGY</h1>
+  </div>
+</header>
+
   <header>
     <div class="container nav">
       <a href="#top" class="brand" aria-label="Homepage">
