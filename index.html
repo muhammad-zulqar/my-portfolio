@@ -12,6 +12,48 @@
   <meta property="og:type" content="website" />
   <meta property="og:image" content="/og-image.png" />
   <style>
+    /* Preloader Styles */
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #ffffff; /* background color */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* stay on top */
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+#preloader .loader {
+  text-align: center;
+}
+
+#preloader img {
+  width: 80px;  /* logo size */
+  animation: spin 2s linear infinite;
+}
+
+#preloader p {
+  margin-top: 10px;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+/* Optional spinning effect */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Hide preloader after fade out */
+#preloader.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
     :root {
       --bg: #0b1020;
       --surface: #0f172a;
@@ -144,6 +186,14 @@
   </style>
 </head>
 <body>
+  <!-- Preloader -->
+<div id="preloader">
+  <div class="loader">
+    <img src="images/logo.png" alt="Loading..." />
+    <p>Loading...</p>
+  </div>
+</div>
+  
   <header>
     <div class="container nav">
       <a href="#top" class="brand" aria-label="Homepage">
@@ -391,6 +441,13 @@
   </footer>
 
   <script>
+    
+  window.addEventListener("load", () => {
+    const preloader = document.getElementById("preloader");
+    preloader.classList.add("hidden");
+  });
+
+
     // --- Theme toggle with localStorage ---
     const root = document.documentElement;
     const themeBtn = document.getElementById('themeBtn');
