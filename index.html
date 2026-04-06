@@ -6,6 +6,8 @@
   <title>MD Zulqarnain Khan — Portfolio</title>
   <meta name="description" content="Personal portfolio of Your Name — Web Developer / Designer." />
   <meta name="theme-color" content="#0ea5e9" />
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="Screenshot (3).png" />
   <!-- Open Graph (edit these) -->
   <meta property="og:title" content="Your Name — Portfolio" />
   <meta property="og:description" content="Web developer building clean, fast, and accessible products." />
@@ -98,77 +100,13 @@
       from { transform: scale(0.8); opacity: 0; }
       to { transform: scale(1); opacity: 1; }
     }
-    /* Auth Buttons */
-.auth-buttons {
-  margin-top: 10px;
-}
-.auth-buttons button {
-  background: #d4af37;
-  color: black;
-  border: none;
-  padding: 8px 15px;
-  margin: 5px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
-}
-.auth-buttons button:hover {
-  background: #b8962d;
-}
-
-/* Modal */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  left: 0; top: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.7);
-}
-.modal-content {
-  background: #fff;
-  margin: 10% auto;
-  padding: 20px;
-  width: 300px;
-  border-radius: 10px;
-  text-align: center;
-}
-.modal-content h2 {
-  margin-bottom: 15px;
-  color: #333;
-}
-.modal-content form input {
-  width: 90%;
-  padding: 10px;
-  margin: 8px 0;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-.modal-content form button {
-  width: 100%;
-  padding: 10px;
-  background: #d4af37;
-  border: none;
-  color: black;
-  font-weight: bold;
-  cursor: pointer;
-  border-radius: 5px;
-}
-.modal-content form button:hover {
-  background: #b8962d;
-}
-.close {
-  float: right;
-  font-size: 22px;
-  cursor: pointer;
-}
-
     /* Header */
 header {
-  background: #000;   /* black background */
-  color: #d4af37;     /* golden text */
+  background: linear-gradient(135deg, #000 0%, #1a1a2e 100%);
+  color: #d4af37;
   text-align: center;
-  padding: 20px;
+  padding: 30px;
+  box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
 }
 
 .logo-container {
@@ -178,14 +116,23 @@ header {
 }
 
 .logo-container img {
-  width: 100px;  /* logo size */
-  margin-bottom: 10px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+  transition: transform 0.3s ease;
+}
+
+.logo-container img:hover {
+  transform: scale(1.1);
 }
 
 .logo-container h1 {
   font-family: "Georgia", serif;
-  font-size: 24px;
-  letter-spacing: 2px;
+  font-size: 32px;
+  letter-spacing: 3px;
+  margin-top: 15px;
+  text-shadow: 0 0 20px rgba(212, 175, 55, 0.8);
 }
 
     /* Preloader Styles */
@@ -252,6 +199,13 @@ header {
       --ring: rgba(14, 165, 233, 0.35);
       --shadow: 0 10px 30px rgba(2, 8, 23, 0.1);
     }
+    .light body {
+      background: #f8fafc;
+      background-attachment: fixed;
+    }
+    .light .particle {
+      background: rgba(0,0,0,0.05);
+    }
 
     /* Reset & base */
     *, *::before, *::after { box-sizing: border-box; }
@@ -259,22 +213,44 @@ header {
     body {
       margin: 0;
       font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
-      background: radial-gradient(1200px 800px at 80% -10%, rgba(79,70,229,0.15), transparent 60%),
-                  radial-gradient(1000px 600px at 10% -20%, rgba(14,165,233,0.25), transparent 60%),
-                  var(--bg);
+      background: #0b1020;
+      background-attachment: fixed;
       color: var(--text);
       line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Particles */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+    .particle {
+      position: absolute;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      animation: twinkle 4s infinite ease-in-out;
+    }
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.2); }
     }
     a { color: inherit; text-decoration: none; }
     img { max-width: 100%; display: block; }
-    .container { width: min(1100px, 92%); margin: 0 auto; }
+    .container { width: 100%; margin: 0 auto; padding: 0 1rem; }
 
     /* Top nav */
     header {
       position: sticky; top: 0; z-index: 50;
-      background: linear-gradient(to bottom, rgba(2,6,23,0.85), rgba(2,6,23,0.55));
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(148,163,184,0.08);
+      background: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(148,163,184,0.1);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
     }
     .nav { display:flex; align-items:center; justify-content:space-between; padding: 14px 0; }
     .brand { display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing: .3px; }
@@ -283,8 +259,8 @@ header {
     nav a { padding:8px 12px; border-radius:10px; color: var(--muted); font-weight:600; }
     nav a:hover, nav a.active { color: var(--text); background: var(--card); }
     .actions { display:flex; gap: 8px; align-items:center; }
-    .btn { display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:12px; border:1px solid rgba(148,163,184,0.2); background:var(--surface); color:var(--text); box-shadow: var(--shadow); }
-    .btn:hover { border-color: var(--brand); box-shadow: 0 0 0 4px var(--ring); }
+    .btn { display:inline-flex; align-items:center; gap:8px; padding:12px 16px; border-radius:12px; border:1px solid rgba(148,163,184,0.2); background: linear-gradient(135deg, rgba(14,165,233,0.1), rgba(34,211,238,0.1)); color:var(--text); box-shadow: 0 4px 15px rgba(14,165,233,0.2); transition: all 0.3s ease; }
+    .btn:hover { border-color: var(--brand); box-shadow: 0 0 20px rgba(14,165,233,0.5), 0 4px 20px rgba(0,0,0,0.3); transform: translateY(-2px); }
     .icon { width:18px; height:18px; }
     .ghost { background: transparent; border-color: rgba(148,163,184,0.25); }
 
@@ -294,9 +270,38 @@ header {
     .title { font-size: clamp(36px, 6vw, 56px); line-height: 1.05; margin: 14px 0 10px; }
     .subtitle { color: var(--muted); font-size: clamp(16px, 2.5vw, 18px); }
     .hero-cta { display:flex; gap:12px; margin-top: 18px; flex-wrap: wrap; }
-    .card { background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)); border: 1px solid rgba(148,163,184,0.18); border-radius: 16px; box-shadow: var(--shadow); }
-    .portrait { overflow:hidden; aspect-ratio: 4/5; border-radius: 18px; position: relative; }
-    .portrait img { width:100%; height:100%; object-fit: cover; filter: saturate(1.05); }
+    .card { background: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02)); border: 1px solid rgba(148,163,184,0.2); border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.3); backdrop-filter: blur(10px); transition: all 0.3s ease; }
+    .card:hover { transform: translateY(-5px); box-shadow: 0 12px 40px rgba(0,0,0,0.4); }
+    .portrait { overflow:hidden; aspect-ratio: 4/5; border-radius: 18px; position: relative; animation: float 6s ease-in-out infinite; }
+    .portrait img { width:100%; height:100%; object-fit: cover; filter: saturate(1.05); transition: transform .4s ease; }
+    .portrait:hover img { transform: scale(1.05); }
+
+    .changing-word {
+      animation: wordChange 3s infinite;
+      display: inline-block;
+      position: relative;
+    }
+    .changing-word::after {
+      content: '';
+      position: absolute;
+      right: -2px;
+      top: 0;
+      height: 100%;
+      width: 2px;
+      background: var(--brand);
+      animation: blink 1s infinite;
+    }
+    @keyframes wordChange {
+      0%, 20% { opacity: 1; transform: translateY(0); }
+      25% { opacity: 0; transform: translateY(-10px); }
+      50%, 70% { opacity: 1; transform: translateY(0); }
+      75% { opacity: 0; transform: translateY(-10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
 
     /* Sections */
     section { padding: 68px 0; }
@@ -344,7 +349,17 @@ header {
     .social a { display:inline-flex; padding:10px; border-radius:12px; border:1px solid rgba(148,163,184,0.25); background: var(--surface); }
     .social a:hover { border-color: var(--brand); box-shadow: 0 0 0 4px var(--ring); }
 
-    /* Utilities */
+    /* Scroll progress */
+    #progressBar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--brand), var(--brand-2));
+      z-index: 1000;
+      transition: width 0.3s ease;
+    }
     .grid-2 { display:grid; grid-template-columns: 1fr 1fr; gap: 18px; }
     .muted { color: var(--muted); }
 
@@ -362,6 +377,11 @@ header {
   </style>
 </head>
 <body>
+  <!-- Scroll Progress -->
+  <div id="progressBar"></div>
+
+  <!-- Particles -->
+  <div class="particles" id="particles"></div>
   <!-- Overlay Image -->
   <div id="imageOverlay">
     <span id="closeBtn">&times;</span>
@@ -390,42 +410,6 @@ header {
     <img src="Screenshot (3).png" alt="My Logo" class="logo">
     <h1>BARBAHAN TECHNOLOGY</h1>
   </div>
-  <header>
-  <div class="auth-buttons">
-    <button onclick="openModal('loginModal')">Sign In</button>
-    <button onclick="openModal('signupModal')">Sign Up</button>
-  </div>
-  <!-- Sign In Modal -->
-<div id="loginModal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal('loginModal')">&times;</span>
-    <h2>Sign In</h2>
-    <form>
-      <input type="email" placeholder="Email" required>
-      <input type="password" placeholder="Password" required>
-      <button type="submit">Login</button>
-    </form>
-    <p>Don’t have an account? <a href="#" id="showSignup">Sign Up</a></p>
-  </div>
-</div>
-
-<!-- Sign Up Modal -->
-<div id="signupModal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal('signupModal')">&times;</span>
-    <h2>Sign Up</h2>
-    <form>
-      <input type="text" placeholder="Full Name" required>
-      <input type="email" placeholder="Email" required>
-      <input type="password" placeholder="Password" required>
-      <button type="submit">Register</button>
-    </form>
-    <p>Already have an account? <a href="#" id="showSignin">Sign In</a></p>
-  </div>
-</div>
-
-</header>
-
 </header>
 
   <header>
@@ -444,8 +428,14 @@ header {
         </ul>
       </nav>
       <div class="actions">
-        <button id="themeBtn" class="btn ghost" aria-label="Toggle theme" title="Toggle theme">
+        <select id="languageSelect" class="btn" style="background: var(--surface); border: 1px solid rgba(148,163,184,0.2); color: var(--text);">
+          <option value="en">English</option>
+          <option value="hi">Hindi</option>
+          <option value="bn">Bangla</option>
+        </select>
+        <button id="themeBtn" class="btn" aria-label="Toggle theme" title="Toggle theme">
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+          Toggle Theme
         </button>
         <a class="btn" href="#contact">
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
@@ -460,10 +450,10 @@ header {
     <section class="hero" aria-labelledby="intro-title">
       <div>
         <span class="tag">Open to work</span>
-        <h1 id="intro-title" class="title">Hi, I'm <span style="color:var(--brand)">MD Zulqarnain Khan</span>.<br/>I build fast, accessible web apps.</h1>
-        <p class="subtitle">Frontend-focused full‑stack developer with a passion for clean UI, performance, and delightful micro‑interactions.</p>
+        <h1 id="intro-title" class="title">Hi, I'm <span style="background: linear-gradient(135deg, var(--brand), var(--brand-2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">MD Zulqarnain Khan</span>.<br/>I build <span id="changing-word" class="changing-word">fast</span> web apps.</h1>
+        <p id="hero-subtitle" class="subtitle">Frontend-focused full‑stack developer with a passion for clean UI, performance, and delightful micro‑interactions.</p>
         <div class="hero-cta">
-          <a class="btn" href="zulqarnain_13342724035_python.pdf" download>
+          <a class="btn" href="MD ZULQARNAIN KHAN CV.pdf" download>
             <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
             Download résumé
           </a>
@@ -483,7 +473,7 @@ header {
     <section id="projects" aria-labelledby="projects-title">
       <header class="section-head">
         <h2 id="projects-title" class="section-title">Featured projects</h2>
-        <p class="section-desc">A few things I've shipped recently. More on <a href="#" aria-label="GitHub profile link">GitHub</a>.</p>
+        <p id="projects-desc" class="section-desc">A few things I've shipped recently. More on <a href="#" aria-label="GitHub profile link">GitHub</a>.</p>
       </header>
       <div class="projects">
         <!-- Project card -->
@@ -539,16 +529,16 @@ header {
     <section id="about" aria-labelledby="about-title">
       <header class="section-head">
         <h2 id="about-title" class="section-title">About me</h2>
-        <p class="section-desc">Developer, problem‑solver, and lifelong learner based in <strong>kolkata, India</strong>.</p>
+        <p id="about-desc" class="section-desc">Developer, problem‑solver, and lifelong learner based in <strong>KOlkata , India</strong>.</p>
       </header>
       <div class="about">
         <div class="card" style="padding:16px">
           <p>I'm a web developer focused on building polished, performant experiences. I enjoy working across the stack, but my happy place is frontend—turning designs into accessible, robust UI.</p>
           <p>Currently exploring <em>AI + dev tooling</em> and <em>design systems</em>. When I'm not coding, you'll find me reading, sketching UI ideas, or contributing to open source.</p>
           <div class="kpis">
-            <div class="kpi"><strong>3+ yrs</strong><span class="muted">Experience</span></div>
-            <div class="kpi"><strong>25+</strong><span class="muted">Projects</span></div>
-            <div class="kpi"><strong>5★</strong><span class="muted">Client rating</span></div>
+            <div class="kpi"><strong id="exp-counter">0</strong><span class="muted">+ yrs Experience</span></div>
+            <div class="kpi"><strong id="proj-counter">0</strong><span class="muted">+ Projects</span></div>
+            <div class="kpi"><strong id="rating-counter">0</strong><span class="muted">★ Client rating</span></div>
           </div>
         </div>
         <div class="card" style="padding:16px">
@@ -581,7 +571,7 @@ header {
     <section id="skills" aria-labelledby="skills-title">
       <header class="section-head">
         <h2 id="skills-title" class="section-title">Skills</h2>
-        <p class="section-desc">Technologies I use day‑to‑day.</p>
+        <p id="skills-desc" class="section-desc">Technologies I use day‑to‑day.</p>
       </header>
       <div class="chips">
         <span class="chip">HTML5</span>
@@ -605,7 +595,7 @@ header {
     <section id="experience" aria-labelledby="exp-title">
       <header class="section-head">
         <h2 id="exp-title" class="section-title">Experience</h2>
-        <p class="section-desc">A quick timeline of where I've worked and what I've done.</p>
+        <p id="exp-desc" class="section-desc">A quick timeline of where I've worked and what I've done.</p>
       </header>
       <div class="timeline">
         <div class="tl-item">
@@ -630,26 +620,27 @@ header {
     <section id="contact" aria-labelledby="contact-title">
       <header class="section-head">
         <h2 id="contact-title" class="section-title">Let’s work together</h2>
-        <p class="section-desc">Message me about projects, collaborations, or speaking.</p>
+        <p id="contact-desc" class="section-desc">Message me about projects, collaborations, or speaking.</p>
       </header>
       <div class="grid-2">
         <div class="card" style="padding:16px">
           <form id="contactForm">
-            <label>
-              <span class="muted">Your name</span>
-              <input name="name" type="text" placeholder="Jane Doe" required />
-            </label>
-            <label>
-              <span class="muted">Email</span>
-              <input name="email" type="email" placeholder="you@example.com" required />
-            </label>
-            <label>
-              <span class="muted">Message</span>
-              <textarea name="message" placeholder="Tell me about your project…" required></textarea>
-            </label>
-            <button class="btn" type="submit">Send message</button>
-            <p id="formNote" class="muted" role="status" aria-live="polite"></p>
-          </form>
+  <label>
+    <span class="muted">Your name</span>
+    <input name="name" id="name" type="text" placeholder="Jane Doe" required />
+  </label>
+  <label>
+    <span class="muted">Email</span>
+    <input name="email" id="email" type="email" placeholder="you@example.com" required />
+  </label>
+  <label>
+    <span class="muted">Message</span>
+    <textarea name="message" id="message" placeholder="Tell me about your project…" required></textarea>
+  </label>
+  <button class="btn" type="submit">Send message</button>
+  <p id="formNote" class="muted" role="status" aria-live="polite"></p>
+</form>
+
         </div>
         <div class="card" style="padding:16px">
           <h3 style="margin-top:0">More ways to reach me</h3>
@@ -674,119 +665,211 @@ header {
     </div>
   </footer>
 
-  <script>
-    // Show image after 2 seconds
-    window.onload = function() {
-      setTimeout(function() {
-        document.getElementById("imageOverlay").style.display = "flex";
-      }, 2000);
-    };
+<script>
+window.addEventListener("load", () => {
+  // --- Preloader ---
+  const preloader = document.getElementById("preloader");
+  if (preloader) preloader.classList.add("hidden");
 
-    // Close the overlay when clicking the button
-    document.getElementById("closeBtn").onclick = function() {
-      document.getElementById("imageOverlay").style.display = "none";
-    };
-    // Auto show alert on page load
-    window.onload = function() {
-      document.getElementById("customAlert").style.display = "flex";
-    }
+  // --- Image overlay ---
+  const imageOverlay = document.getElementById("imageOverlay");
+  if (imageOverlay) setTimeout(() => { imageOverlay.style.display = "flex"; }, 2000);
 
-    function closeCustomAlert() {
-      document.getElementById("customAlert").style.display = "none";
-    }
-    document.getElementById("showSignup").onclick = function() {
-  document.querySelector(".modal").style.display = "none";
-  document.getElementById("signupModal").style.display = "block";
-};
+  const closeBtn = document.getElementById("closeBtn");
+  if (closeBtn && imageOverlay) closeBtn.onclick = () => { imageOverlay.style.display = "none"; };
 
-document.getElementById("showSignin").onclick = function() {
-  document.getElementById("signupModal").style.display = "none";
-  document.querySelector(".modal").style.display = "block";
-};
+  // --- Custom alert ---
+  const customAlert = document.getElementById("customAlert");
+  if (customAlert) customAlert.style.display = "flex";
 
-    // Open modal
-function openModal(id) {
-  document.getElementById(id).style.display = "block";
-}
+  window.closeCustomAlert = function() {
+    if (customAlert) customAlert.style.display = "none";
+  };
 
-// Close modal
-function closeModal(id) {
-  document.getElementById(id).style.display = "none";
-}
+  // --- Contact form ---
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    contactForm.addEventListener('submit', e => {
+      e.preventDefault();
+      const name = document.getElementById('name')?.value;
+      const email = document.getElementById('email')?.value;
+      const message = document.getElementById('message')?.value;
 
-// Close if clicked outside modal
-window.onclick = function(event) {
-  const loginModal = document.getElementById("loginModal");
-  const signupModal = document.getElementById("signupModal");
-  if (event.target == loginModal) loginModal.style.display = "none";
-  if (event.target == signupModal) signupModal.style.display = "none";
-}
+      if (!name || !email || !message) {
+        alert("Please fill all fields");
+        return;
+      }
 
-    
-  window.addEventListener("load", () => {
-    const preloader = document.getElementById("preloader");
-    preloader.classList.add("hidden");
-  });
+      // Send to WhatsApp
+      const phone = '919330354454'; // Replace with your actual WhatsApp number (e.g., 1234567890)
+      const whatsappMessage = `Hello, I'm ${name}.\nEmail: ${email}\nMessage: ${message}`;
+      const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(whatsappMessage)}`;
+      window.open(whatsappUrl, '_blank');
+    });
+  }
 
+  // --- Theme toggle ---
+  const themeBtn = document.getElementById('themeBtn');
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'light') document.body.classList.add('light');
 
-    // --- Theme toggle with localStorage ---
-    const root = document.documentElement;
-    const themeBtn = document.getElementById('themeBtn');
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'light') document.body.classList.add('light');
-
+  if (themeBtn) {
     themeBtn.addEventListener('click', () => {
       document.body.classList.toggle('light');
-      const isLight = document.body.classList.contains('light');
-      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+      localStorage.setItem('theme', document.body.classList.contains('light') ? 'light' : 'dark');
       themeBtn.blur();
     });
+  }
 
-    // --- Active link highlight on scroll ---
-    const sections = [...document.querySelectorAll('main section[id]')];
-    const navLinks = [...document.querySelectorAll('nav a')];
-    const setActive = () => {
-      const y = window.scrollY + 120;
-      let current = sections[0].id;
-      for (const s of sections) { if (y >= s.offsetTop) current = s.id; }
-      navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current));
-    };
-    setActive();
-    window.addEventListener('scroll', setActive);
+  // --- Language translations ---
+  const translations = {
+    en: {
+      'intro-title': 'Hi, I\'m MD Zulqarnain Khan.<br/>I build fast, accessible web apps.',
+      'hero-subtitle': 'Frontend-focused full‑stack developer with a passion for clean UI, performance, and delightful micro‑interactions.',
+      'projects-title': 'Featured projects',
+      'projects-desc': 'A few things I\'ve shipped recently. More on GitHub.',
+      'about-title': 'About me',
+      'about-desc': 'Developer, problem‑solver, and lifelong learner based in City, Country.',
+      'skills-title': 'Skills',
+      'skills-desc': 'Technologies I use day‑to‑day.',
+      'exp-title': 'Experience',
+      'exp-desc': 'A quick timeline of where I\'ve worked and what I\'ve done.',
+      'contact-title': 'Let\'s work together',
+      'contact-desc': 'Message me about projects, collaborations, or speaking.'
+    },
+    hi: {
+      'intro-title': 'नमस्ते, मैं एमडी ज़ुल्करनैन खान हूं।<br/>मैं तेज़, पहुंच योग्य वेब ऐप्स बनाता हूं।',
+      'hero-subtitle': 'फ्रंटएंड-केंद्रित फुल-स्टैक डेवलपर, क्लीन यूआई, प्रदर्शन और आकर्षक माइक्रो-इंटरैक्शंस के लिए जुनून।',
+      'projects-title': 'विशेष परियोजनाएं',
+      'projects-desc': 'मैंने हाल ही में कुछ चीजें भेजी हैं। अधिक GitHub पर।',
+      'about-title': 'मेरे बारे में',
+      'about-desc': 'डेवलपर, समस्या-समाधानकर्ता, और आजीवन शिक्षार्थी शहर, देश में आधारित।',
+      'skills-title': 'कौशल',
+      'skills-desc': 'तकनीकें जिनका मैं दिन-प्रतिदिन उपयोग करता हूं।',
+      'exp-title': 'अनुभव',
+      'exp-desc': 'जहां मैंने काम किया है और क्या किया है उसका एक त्वरित समयरेखा।',
+      'contact-title': 'आइए साथ काम करें',
+      'contact-desc': 'परियोजनाओं, सहयोगों या बोलने के बारे में मुझे संदेश दें।'
+    },
+    bn: {
+      'intro-title': 'হ্যালো, আমি এমডি জুলকারনাইন খান।<br/>আমি দ্রুত, অ্যাক্সেসযোগ্য ওয়েব অ্যাপ তৈরি করি।',
+      'hero-subtitle': 'ফ্রন্টএন্ড-কেন্দ্রিক ফুল-স্ট্যাক ডেভেলপার, ক্লিন ইউআই, পারফরম্যান্স এবং আকর্ষণীয় মাইক্রো-ইন্টারেকশনের জন্য আবেগ।',
+      'projects-title': 'বৈশিষ্ট্যযুক্ত প্রকল্প',
+      'projects-desc': 'আমি সম্প্রতি কিছু জিনিস পাঠিয়েছি। আরও GitHub-এ।',
+      'about-title': 'আমার সম্পর্কে',
+      'about-desc': 'ডেভেলপার, সমস্যা-সমাধানকারী, এবং আজীবন শিক্ষার্থী শহর, দেশে ভিত্তিক।',
+      'skills-title': 'দক্ষতা',
+      'skills-desc': 'প্রযুক্তি যা আমি দিন-দিন ব্যবহার করি।',
+      'exp-title': 'অভিজ্ঞতা',
+      'exp-desc': 'যেখানে আমি কাজ করেছি এবং কী করেছি তার একটি দ্রুত সময়রেখা।',
+      'contact-title': 'চলুন একসাথে কাজ করি',
+      'contact-desc': 'প্রকল্প, সহযোগিতা বা কথা বলার বিষয়ে আমাকে বার্তা দিন।'
+    }
+  };
 
-    // --- Year in footer ---
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // --- Lightweight reveal on scroll ---
-    const revealEls = document.querySelectorAll('.card, .project, .kpi, .chip, .portrait');
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
-        if (e.isIntersecting) {
-          e.target.animate([{ opacity: 0, transform: 'translateY(8px)' }, { opacity: 1, transform: 'translateY(0)' }], { duration: 500, easing: 'ease-out', fill: 'forwards' });
-          io.unobserve(e.target);
-        }
+  const languageSelect = document.getElementById('languageSelect');
+  if (languageSelect) {
+    languageSelect.addEventListener('change', (e) => {
+      const lang = e.target.value;
+      Object.keys(translations[lang]).forEach(key => {
+        const el = document.getElementById(key);
+        if (el) el.innerHTML = translations[lang][key];
       });
-    }, { threshold: 0.15 });
-    revealEls.forEach(el => io.observe(el));
-
-    // --- Contact form (no backend) ---
-    const form = document.getElementById('contactForm');
-    const note = document.getElementById('formNote');
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const data = new FormData(form);
-      const name = data.get('name');
-      const email = data.get('email');
-      const message = data.get('message');
-      // Fallback: open mail client
-      const subject = encodeURIComponent('Hello from ' + name);
-      const body = encodeURIComponent(message + '\n\n— ' + name + ' (' + email + ')');
-      window.location.href = `mailto:khanmuhammadzulqarnain34@gmail.com
-?subject=${subject}&body=${body}`;
-      note.textContent = 'Thanks! Your email client should open. If not, email me at khanmuhammadzulqarnain34@gmail.com.';
-      form.reset();
     });
-  </script>
+  }
+
+  // --- Active link highlight ---
+  const sections = [...document.querySelectorAll('main section[id]')];
+  const navLinks = [...document.querySelectorAll('nav a')];
+  const setActive = () => {
+    const y = window.scrollY + 120;
+    let current = sections[0]?.id || "";
+    for (const s of sections) if (y >= s.offsetTop) current = s.id;
+    navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current));
+  };
+  setActive();
+  window.addEventListener('scroll', setActive);
+
+  // --- Reveal on scroll ---
+  const revealEls = document.querySelectorAll('.card, .project, .kpi, .chip, .portrait');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.animate(
+          [{ opacity: 0, transform: 'translateY(8px)' }, { opacity: 1, transform: 'translateY(0)' }],
+          { duration: 500, easing: 'ease-out', fill: 'forwards' }
+        );
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+
+  // --- Year in footer ---
+  const yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  // --- Create particles ---
+  const particlesContainer = document.getElementById('particles');
+  for (let i = 0; i < 50; i++) {
+    const particle = document.createElement('div');
+    particle.className = 'particle';
+    particle.style.left = Math.random() * 100 + '%';
+    particle.style.top = Math.random() * 100 + '%';
+    particle.style.width = particle.style.height = Math.random() * 3 + 1 + 'px';
+    particle.style.animationDelay = Math.random() * 4 + 's';
+    particlesContainer.appendChild(particle);
+  }
+
+  // --- Word changing animation ---
+  const changingWord = document.getElementById('changing-word');
+  const words = ['fast', 'accessible', 'beautiful', 'responsive', 'innovative'];
+  let wordIndex = 0;
+  setInterval(() => {
+    changingWord.textContent = words[wordIndex];
+    wordIndex = (wordIndex + 1) % words.length;
+  }, 3000);
+
+  // --- Animated counters ---
+  function animateCounter(id, target, suffix = '') {
+    const el = document.getElementById(id);
+    let count = 0;
+    const increment = target / 100;
+    const timer = setInterval(() => {
+      count += increment;
+      if (count >= target) {
+        count = target;
+        clearInterval(timer);
+      }
+      el.textContent = Math.floor(count) + suffix;
+    }, 20);
+  }
+
+  // Trigger counters on scroll
+  const aboutSection = document.getElementById('about');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounter('exp-counter', 3, '+ yrs');
+        animateCounter('proj-counter', 25, '+');
+        animateCounter('rating-counter', 5, '★');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  if (aboutSection) observer.observe(aboutSection);
+
+  // --- Scroll progress ---
+  const progressBar = document.getElementById('progressBar');
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.body.scrollHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / docHeight) * 100;
+    progressBar.style.width = scrollPercent + '%';
+  });
+});
+</script>
+
 
   <!--
     ✅ How to customize quickly
@@ -803,5 +886,4 @@ window.onclick = function(event) {
   -->
 </body>
 </html>
-
 
