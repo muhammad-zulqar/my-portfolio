@@ -318,9 +318,101 @@ header {
     .kpi { padding:16px; border-radius: 14px; background: var(--card); text-align:center; }
     .kpi strong { font-size: 22px; display:block; }
 
-    /* Skills */
-    .chips { display:flex; flex-wrap: wrap; gap:10px; }
-    .chip { padding:8px 12px; border:1px solid rgba(148,163,184,0.25); border-radius: 999px; background: var(--surface); box-shadow: var(--shadow); font-weight:600; }
+    /* Skills — category cards */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      align-items: stretch;
+    }
+    .skill-card {
+      padding: 22px 22px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      text-align: left;
+      position: relative;
+      overflow: hidden;
+    }
+    .skill-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--brand), var(--brand-2));
+      opacity: 0.85;
+      border-radius: 20px 20px 0 0;
+    }
+    .skill-card-head {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .skill-card-icon {
+      flex-shrink: 0;
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(145deg, rgba(14, 165, 233, 0.2), rgba(34, 211, 238, 0.12));
+      border: 1px solid rgba(148, 163, 184, 0.22);
+      color: var(--brand-2);
+      box-shadow: 0 8px 24px rgba(14, 165, 233, 0.15);
+    }
+    .light .skill-card-icon {
+      box-shadow: 0 6px 18px rgba(14, 165, 233, 0.12);
+    }
+    .skill-card-icon svg {
+      width: 24px;
+      height: 24px;
+      stroke: currentColor;
+      fill: none;
+    }
+    .skill-card-title-wrap { min-width: 0; }
+    .skill-card h3 {
+      margin: 0 0 4px;
+      font-size: 1.125rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+    .skill-card .skill-card-lede {
+      margin: 0;
+      font-size: 0.875rem;
+      line-height: 1.5;
+    }
+    .skill-card-tags {
+      list-style: none;
+      padding: 0;
+      margin: 4px 0 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .skill-card-tags li {
+      font-size: 0.8125rem;
+      font-weight: 600;
+      padding: 7px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.22);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text);
+    }
+    .light .skill-card-tags li {
+      background: rgba(2, 6, 23, 0.04);
+    }
+    @media (min-width: 769px) {
+      .skill-card:hover {
+        border-color: rgba(34, 211, 238, 0.35);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(14, 165, 233, 0.08);
+      }
+      .light .skill-card:hover {
+        box-shadow: 0 12px 36px rgba(2, 8, 23, 0.1), 0 0 0 1px rgba(14, 165, 233, 0.12);
+      }
+    }
 
     /* Projects */
     .projects { display:grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
@@ -731,21 +823,76 @@ header {
         <h2 id="skills-title" class="section-title">Skills</h2>
         <p id="skills-desc" class="section-desc">Technologies I use day‑to‑day.</p>
       </header>
-      <div class="chips">
-        <span class="chip">HTML5</span>
-        <span class="chip">CSS3</span>
-        <span class="chip">JavaScript</span>
-        <span class="chip">TypeScript</span>
-        <span class="chip">React</span>
-        <span class="chip">Node.js</span>
-        <span class="chip">Express</span>
-        <span class="chip">MongoDB</span>
-        <span class="chip">PostgreSQL</span>
-        <span class="chip">Git</span>
-        <span class="chip">REST</span>
-        <span class="chip">Figma</span>
-        <span class="chip">Accessibility (a11y)</span>
-        <span class="chip">Performance</span>
+      <div class="skills-grid">
+        <article class="skill-card card">
+          <div class="skill-card-head">
+            <div class="skill-card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v8l-8 4-8-4V7l8-4z"/><path d="M12 12l8-4M12 12v9M12 12L4 8"/></svg>
+            </div>
+            <div class="skill-card-title-wrap">
+              <h3>Frontend &amp; UI</h3>
+              <p class="skill-card-lede muted">Interfaces, design systems, and polished UX in the browser.</p>
+            </div>
+          </div>
+          <ul class="skill-card-tags" aria-label="Frontend skills">
+            <li>HTML5</li>
+            <li>CSS3</li>
+            <li>JavaScript</li>
+            <li>TypeScript</li>
+            <li>React</li>
+            <li>Figma</li>
+            <li>Accessibility (a11y)</li>
+            <li>Performance</li>
+          </ul>
+        </article>
+
+        <article class="skill-card card">
+          <div class="skill-card-head">
+            <div class="skill-card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17h16"/><path d="M6 21h12a2 2 0 002-2v-9H4v9a2 2 0 002 2z"/><path d="M8 7V5a4 4 0 118 0v2"/></svg>
+            </div>
+            <div class="skill-card-title-wrap">
+              <h3>Backend &amp; APIs</h3>
+              <p class="skill-card-lede muted">Services, routing, and integrations behind the scenes.</p>
+            </div>
+          </div>
+          <ul class="skill-card-tags" aria-label="Backend skills">
+            <li>Node.js</li>
+            <li>Express</li>
+            <li>REST</li>
+          </ul>
+        </article>
+
+        <article class="skill-card card">
+          <div class="skill-card-head">
+            <div class="skill-card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6"/><path d="M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg>
+            </div>
+            <div class="skill-card-title-wrap">
+              <h3>Data &amp; persistence</h3>
+              <p class="skill-card-lede muted">Storing and querying data for scalable apps.</p>
+            </div>
+          </div>
+          <ul class="skill-card-tags" aria-label="Data skills">
+            <li>MongoDB</li>
+            <li>PostgreSQL</li>
+          </ul>
+        </article>
+
+        <article class="skill-card card">
+          <div class="skill-card-head">
+            <div class="skill-card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+            </div>
+            <div class="skill-card-title-wrap">
+              <h3>Workflow &amp; tooling</h3>
+              <p class="skill-card-lede muted">Collaboration and shipping reliably.</p>
+            </div>
+          </div>
+          <ul class="skill-card-tags" aria-label="Workflow skills">
+            <li>Git</li>
+          </ul>
+        </article>
       </div>
     </section>
 
@@ -1014,7 +1161,7 @@ window.addEventListener("load", () => {
   window.addEventListener('scroll', setActive);
 
   // --- Reveal on scroll (skip flashy stagger on phones / reduced motion) ---
-  const revealEls = document.querySelectorAll('.card, .project, .kpi, .chip, .portrait');
+  const revealEls = document.querySelectorAll('.card, .project, .kpi, .skill-card, .portrait');
   if (mqCoarseMobile.matches || mqReduceMotion.matches) {
     revealEls.forEach((el) => {
       el.style.opacity = '1';
