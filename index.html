@@ -2,12 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>MD Zulqarnain Khan — Portfolio</title>
   <meta name="description" content="Personal portfolio of Your Name — Web Developer / Designer." />
   <meta name="theme-color" content="#0ea5e9" />
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="Screenshot (3).png" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="apple-touch-icon" href="Barbahan technology.png" />
+  <link rel="icon" type="image/png" href="Barbahan technology.png" />
   <!-- Open Graph (edit these) -->
   <meta property="og:title" content="Your Name — Portfolio" />
   <meta property="og:description" content="Web developer building clean, fast, and accessible products." />
@@ -21,17 +22,19 @@
 
     /* Fullscreen overlay */
     #imageOverlay {
-      display: none; /* hidden by default */
+      display: none; /* must stay hidden until JS shows (.image-overlay-visible) */
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
       background-color: rgba(0,0,0,0.9);
-      display: flex;
       align-items: center;
       justify-content: center;
       z-index: 9999;
+    }
+    #imageOverlay.image-overlay-visible {
+      display: flex;
     }
 
     #imageOverlay img {
@@ -370,9 +373,161 @@ header {
       .projects { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 640px) {
-      nav ul { display:none; }
       .projects { grid-template-columns: 1fr; }
       .kpis { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* —— Android / touch: less jank, calmer motion, reachable nav —— */
+    html { -webkit-text-size-adjust: 100%; }
+    body { padding-bottom: env(safe-area-inset-bottom, 0); }
+
+    @media (max-width: 768px) {
+      body,
+      .light body {
+        background-attachment: scroll !important;
+      }
+      header:not(:first-of-type) {
+        backdrop-filter: none;
+        background: rgba(15, 23, 42, 0.97);
+      }
+      .light header:not(:first-of-type) {
+        background: rgba(255, 255, 255, 0.97);
+      }
+      .particle {
+        animation: none;
+        opacity: 0.1;
+      }
+      .portrait {
+        animation: none;
+      }
+      .changing-word {
+        animation: none;
+      }
+      .changing-word::after {
+        display: none;
+      }
+      .card:hover,
+      .btn:hover {
+        transform: none;
+      }
+      nav a,
+      .btn {
+        min-height: 44px;
+        align-items: center;
+      }
+      .nav {
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .actions {
+        flex-wrap: wrap;
+        width: 100%;
+        justify-content: flex-start;
+      }
+      .actions .btn,
+      #languageSelect.btn {
+        flex: 1 1 auto;
+        min-width: min(140px, 100%);
+        justify-content: center;
+      }
+      #progressBar {
+        height: 2px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .particle,
+      .portrait,
+      .changing-word,
+      .changing-word::after,
+      #preloader img {
+        animation: none !important;
+      }
+      #preloader.hidden {
+        transition: opacity 0.2s ease, visibility 0.2s ease;
+      }
+      .alert-box {
+        animation: none;
+      }
+    }
+
+    .nav-toggle {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      border-radius: 12px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      background: var(--surface);
+      color: var(--text);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .nav-toggle:focus-visible {
+      outline: 2px solid var(--brand);
+      outline-offset: 2px;
+    }
+    .nav-toggle .bar {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: currentColor;
+      border-radius: 1px;
+      box-shadow: 0 -6px 0 currentColor, 0 6px 0 currentColor;
+    }
+
+    @media (max-width: 880px) {
+      .nav-toggle { display: inline-flex; }
+      nav.primary-nav {
+        position: absolute;
+        top: calc(100% + 8px);
+        left: 0;
+        right: 0;
+        padding: 12px 16px calc(14px + env(safe-area-inset-bottom));
+        margin: 0 -1rem;
+        background: var(--surface);
+        border-bottom: 1px solid rgba(148,163,184,0.15);
+        box-shadow: 0 18px 40px rgba(0,0,0,0.35);
+        max-height: min(72vh, 420px);
+        overflow-y: auto;
+        visibility: hidden;
+        opacity: 0;
+        transform: translateY(-8px);
+        pointer-events: none;
+        transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+      }
+      .light nav.primary-nav {
+        background: rgba(255,255,255,0.98);
+      }
+      nav.primary-nav.is-open {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+      nav.primary-nav ul {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        width: 100%;
+      }
+      nav.primary-nav a {
+        display: flex;
+        width: 100%;
+        padding: 14px 14px;
+        border-radius: 12px;
+        font-size: 1rem;
+      }
+      .brand {
+        flex: 1;
+        min-width: 0;
+      }
+      .nav {
+        position: relative;
+      }
     }
   </style>
 </head>
@@ -418,8 +573,11 @@ header {
         <span class="logo" aria-hidden="true">⚡</span>
         <span>MD Zulqarnain Khan</span>
       </a>
-      <nav aria-label="Primary">
-        <ul>
+      <button type="button" class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="primaryNavPanel">
+        <span class="bar" aria-hidden="true"></span>
+      </button>
+      <nav class="primary-nav" id="primaryNavPanel" aria-label="Primary">
+        <ul id="primaryNavList">
           <li><a class="active" href="#projects">Projects</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#skills">Skills</a></li>
@@ -646,7 +804,9 @@ header {
           <h3 style="margin-top:0">More ways to reach me</h3>
           <p class="muted">Email: <a href="mailto:khanmuhammadzulqarnain34@gmail.com
 ">khanmuhammadzulqarnain34@gmail.com
-</a><br/>Location: kolkata, India (IST)</p>
+</a><p class="muted">location: <a href="https://www.google.com/maps/@22.5768694,88.3758944,16z?authuser=0&entry=ttu&g_ep=EgoyMDI2MDQyMC4wIKXMDSoASAFQAw%3D%3D
+">Kolkata , India
+</a>
           <div class="social" aria-label="Social links">
             <a href="https://github.com/muhammad-zulqar" aria-label="GitHub">🐙</a>
             <a href="https://www.linkedin.com/in/muhammad-zulqarnain-khan-72a4b72bb/" aria-label="LinkedIn">💼</a>
@@ -667,20 +827,83 @@ header {
 
 <script>
 window.addEventListener("load", () => {
+  const mqCoarseMobile = window.matchMedia("(max-width: 768px), (pointer: coarse)");
+  const mqReduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
   // --- Preloader ---
   const preloader = document.getElementById("preloader");
-  if (preloader) preloader.classList.add("hidden");
+  const preHideMs =
+    mqReduceMotion.matches ? 200 : mqCoarseMobile.matches ? 450 : 600;
+  window.setTimeout(() => {
+    if (preloader) preloader.classList.add("hidden");
+  }, preHideMs);
 
-  // --- Image overlay ---
+  // --- Image overlay: was forced `display:flex` in CSS bug — calm on phones (optional / later) ---
   const imageOverlay = document.getElementById("imageOverlay");
-  if (imageOverlay) setTimeout(() => { imageOverlay.style.display = "flex"; }, 2000);
+  function showImageOverlay() {
+    if (!imageOverlay) return;
+    imageOverlay.classList.add("image-overlay-visible");
+  }
+  function hideImageOverlay() {
+    if (!imageOverlay) return;
+    imageOverlay.classList.remove("image-overlay-visible");
+  }
+
+  if (imageOverlay && !mqCoarseMobile.matches) {
+    window.setTimeout(showImageOverlay, mqReduceMotion.matches ? 4000 : 2200);
+  }
 
   const closeBtn = document.getElementById("closeBtn");
-  if (closeBtn && imageOverlay) closeBtn.onclick = () => { imageOverlay.style.display = "none"; };
+  if (closeBtn && imageOverlay) closeBtn.onclick = () => hideImageOverlay();
 
-  // --- Custom alert ---
+  // --- Welcome alert: lighter on Android (no stacking flash with fullscreen image) ---
   const customAlert = document.getElementById("customAlert");
-  if (customAlert) customAlert.style.display = "flex";
+  if (customAlert) {
+    if (mqCoarseMobile.matches) {
+      window.setTimeout(() => {
+        customAlert.style.display = "flex";
+      }, 280);
+    } else {
+      customAlert.style.display = "flex";
+    }
+  }
+
+  // --- Mobile nav drawer ---
+  const navToggle = document.getElementById("navToggle");
+  const primaryNavPanel = document.getElementById("primaryNavPanel");
+  const mqNavFold = window.matchMedia("(max-width: 880px)");
+  function navClose() {
+    if (!primaryNavPanel || !navToggle) return;
+    primaryNavPanel.classList.remove("is-open");
+    navToggle.setAttribute("aria-expanded", "false");
+    navToggle.setAttribute("aria-label", "Open menu");
+  }
+  function navOpen() {
+    if (!primaryNavPanel || !navToggle) return;
+    primaryNavPanel.classList.add("is-open");
+    navToggle.setAttribute("aria-expanded", "true");
+    navToggle.setAttribute("aria-label", "Close menu");
+  }
+  if (navToggle && primaryNavPanel) {
+    navToggle.addEventListener("click", (ev) => {
+      ev.stopPropagation();
+      primaryNavPanel.classList.contains("is-open") ? navClose() : navOpen();
+    });
+    primaryNavPanel.querySelectorAll("a").forEach((link) =>
+      link.addEventListener("click", () => {
+        if (mqNavFold.matches) navClose();
+      })
+    );
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && mqNavFold.matches) navClose();
+    });
+    document.addEventListener("click", (e) => {
+      const t = e.target;
+      if (!mqNavFold.matches || !primaryNavPanel.classList.contains("is-open")) return;
+      if (primaryNavPanel.contains(t) || navToggle.contains(t)) return;
+      navClose();
+    });
+  }
 
   window.closeCustomAlert = function() {
     if (customAlert) customAlert.style.display = "none";
@@ -790,45 +1013,59 @@ window.addEventListener("load", () => {
   setActive();
   window.addEventListener('scroll', setActive);
 
-  // --- Reveal on scroll ---
+  // --- Reveal on scroll (skip flashy stagger on phones / reduced motion) ---
   const revealEls = document.querySelectorAll('.card, .project, .kpi, .chip, .portrait');
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.animate(
-          [{ opacity: 0, transform: 'translateY(8px)' }, { opacity: 1, transform: 'translateY(0)' }],
-          { duration: 500, easing: 'ease-out', fill: 'forwards' }
-        );
-        io.unobserve(e.target);
-      }
+  if (mqCoarseMobile.matches || mqReduceMotion.matches) {
+    revealEls.forEach((el) => {
+      el.style.opacity = '1';
+      el.style.transform = 'none';
     });
-  }, { threshold: 0.15 });
-  revealEls.forEach(el => io.observe(el));
+  } else {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.animate(
+            [{ opacity: 0, transform: 'translateY(8px)' }, { opacity: 1, transform: 'translateY(0)' }],
+            { duration: 500, easing: 'ease-out', fill: 'forwards' }
+          );
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    revealEls.forEach(el => io.observe(el));
+  }
 
   // --- Year in footer ---
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  // --- Create particles ---
+  // --- Create particles (fewer on mobile — less repaint / “flash”) ---
   const particlesContainer = document.getElementById('particles');
-  for (let i = 0; i < 50; i++) {
-    const particle = document.createElement('div');
-    particle.className = 'particle';
-    particle.style.left = Math.random() * 100 + '%';
-    particle.style.top = Math.random() * 100 + '%';
-    particle.style.width = particle.style.height = Math.random() * 3 + 1 + 'px';
-    particle.style.animationDelay = Math.random() * 4 + 's';
-    particlesContainer.appendChild(particle);
+  const particleCount =
+    mqReduceMotion.matches ? 0 : mqCoarseMobile.matches ? 14 : 50;
+  if (particlesContainer && particleCount > 0) {
+    for (let i = 0; i < particleCount; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      particle.style.left = Math.random() * 100 + '%';
+      particle.style.top = Math.random() * 100 + '%';
+      particle.style.width = particle.style.height = Math.random() * 3 + 1 + 'px';
+      particle.style.animationDelay = Math.random() * 4 + 's';
+      particlesContainer.appendChild(particle);
+    }
   }
 
   // --- Word changing animation ---
   const changingWord = document.getElementById('changing-word');
   const words = ['fast', 'accessible', 'beautiful', 'responsive', 'innovative'];
   let wordIndex = 0;
-  setInterval(() => {
-    changingWord.textContent = words[wordIndex];
-    wordIndex = (wordIndex + 1) % words.length;
-  }, 3000);
+  const wordMs = mqReduceMotion.matches ? 9000 : mqCoarseMobile.matches ? 5500 : 3000;
+  if (changingWord) {
+    setInterval(() => {
+      changingWord.textContent = words[wordIndex];
+      wordIndex = (wordIndex + 1) % words.length;
+    }, wordMs);
+  }
 
   // --- Animated counters ---
   function animateCounter(id, target, suffix = '') {
@@ -869,7 +1106,15 @@ window.addEventListener("load", () => {
   });
 });
 </script>
-
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('service-worker.js')
+      .then(registration => console.log('Service Worker registered:', registration.scope))
+      .catch(error => console.warn('Service Worker registration failed:', error));
+  });
+}
+</script>
 
   <!--
     ✅ How to customize quickly
