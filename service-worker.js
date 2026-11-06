@@ -1,16 +1,17 @@
-const CACHE_NAME = 'portfolio-cache-v1';
-const ASSETS = [
-  '.',
-  'portfolio.html',
-  'manifest.json',
-  'Barbahan technology.png',
-  'Screenshot (3).png'
+const CACHE_NAME = 'zulqarnain-portfolio-v2';
+const APP_SHELL = [
+  './',
+  './index.html',
+  './manifest.json',
+  './NexVora.jpeg',
+  './habdsome%20piv.jpeg'
 ];
 
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
-      .then(cache => cache.addAll(ASSETS))
+      .then(cache => cache.addAll(APP_SHELL))
+      .then(() => self.skipWaiting())
   );
 });
 
@@ -18,13 +19,19 @@ self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(keys => Promise.all(
       keys.filter(key => key !== CACHE_NAME).map(key => caches.delete(key))
-    ))
+    )).then(() => self.clients.claim())
   );
 });
 
 self.addEventListener('fetch', event => {
+  if (event.request.method !== 'GET' || new URL(event.request.url).origin !== self.location.origin) return;
   event.respondWith(
-    caches.match(event.request)
-      .then(cachedResponse => cachedResponse || fetch(event.request))
+    caches.match(event.request).then(cached => cached || fetch(event.request).then(response => {
+      if (response && response.ok) {
+        const copy = response.clone();
+        caches.open(CACHE_NAME).then(cache => cache.put(event.request, copy));
+      }
+      return response;
+    }))
   );
 });
