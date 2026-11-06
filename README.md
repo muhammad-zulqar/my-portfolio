@@ -1,83 +1,36 @@
-# Muhammad Zulqarnain Khan
+# MD Zulqarnain Khan — Developer Portfolio
 
-## Full Stack Developer | BCA Student
+A responsive personal portfolio built with semantic HTML, custom CSS and vanilla JavaScript.
 
-Passionate web developer focused on building modern, responsive, and scalable applications.
+## Design
 
----
+- Dark, editorial-inspired visual system with lime accents
+- Responsive navigation and mobile menu
+- Large typographic introduction and portrait feature
+- Custom project previews and Bento-style about section
+- Skills, journey and contact sections
+- Scroll reveal interactions and active section navigation
+- Reduced-motion support and accessibility-focused markup
+- Lightweight PWA app shell
 
-## 🚀 About Me
+## Run locally
 
-- 🎓 BCA Student
-- 💻 Learning Full Stack Development
-- ⚛️ React & TypeScript Developer
-- 🐍 Learning Python & DSA
-- 🌐 Interested in Cloud & Modern Web Technologies
-- 📚 Continuously improving coding skills and real-world projects
+No build step or package installation is required.
 
----
+1. Clone this repository.
+2. Open `index.html` in a browser, or use the VS Code Live Server extension.
+3. Update the content, project links and assets as your portfolio grows.
 
-## 🛠️ Tech Stack
+## Main files
 
-### Frontend
-- HTML5
-- CSS3
-- JavaScript
-- TypeScript
-- React
-- Tailwind CSS
+- `index.html` — portfolio structure, styling and interactions
+- `manifest.json` — installable web app metadata
+- `service-worker.js` — app-shell caching
+- `habdsome piv.jpeg` — profile portrait
+- `MD ZULQARNAIN KHAN CV.pdf` — downloadable CV
 
-### Backend
-- Node.js
-- Express.js
-
-### Database
-- PostgreSQL
-- MongoDB
-
-### Tools & Platforms
-- Git
-- GitHub
-- VS Code
-- Vercel
-- Render
-
----
-
-## 📌 Current Projects
-
-### 🏥 Medicore
-Hospital Management System with:
-- Doctor Authentication
-- Patient Management
-- Appointment System
-- Secure Dashboard
-
-### 🌐 Portfolio Website
-Modern personal portfolio with responsive UI and animations.
-
-### 📋 Task Manager
-Task management application with authentication and database integration.
-
----
-
-## 📈 Current Learning Goals
-
-- Advanced React
-- Backend Architecture
-- Data Structures & Algorithms
-- Cloud Computing
-- Docker
-- System Design
-
----
-
-## 📫 Contact
+## Contact
 
 - Email: khanmuhammadzulqarnain34@gmail.com
-
----
-
-## ⚡ Fun Fact
-
-I enjoy building real-world projects and continuously exploring modern technologies.
+- GitHub: https://github.com/muhammad-zulqar
+- LinkedIn: https://www.linkedin.com/in/muhammad-zulqarnain-khan-72a4b72bb/
