@@ -164,6 +164,14 @@
       }), {rootMargin: '-35% 0px -55% 0px'});
       sections.forEach(section => activeObserver.observe(section));
     }
+    if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./service-worker.js').catch(error => {
+          console.warn('Service worker registration failed:', error);
+        });
+      });
+    }
+
   </script>
 </body>
 </html>
