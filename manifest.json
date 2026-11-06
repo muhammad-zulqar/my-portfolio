@@ -1,17 +1,18 @@
 {
-  "name": "Barbahan Technology Portfolio",
-  "short_name": "BarbahanPWA",
-  "description": "Portfolio of Barbahan Technology and MD Zulqarnain Khan.",
-  "start_url": ".",
+  "name": "MD Zulqarnain Khan — Developer Portfolio",
+  "short_name": "Zulqarnain",
+  "description": "Portfolio of MD Zulqarnain Khan, developer and builder based in Kolkata, India.",
+  "start_url": "./",
+  "scope": "./",
   "display": "standalone",
-  "background_color": "#0b1020",
-  "theme_color": "#0ea5e9",
+  "background_color": "#080b10",
+  "theme_color": "#080b10",
   "icons": [
     {
-      "src": "Barbahan technology.png",
+      "src": "NexVora.jpeg",
       "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "type": "image/jpeg",
+      "purpose": "any"
     }
   ]
 }
